@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AuthTaskModule {
+abstract class AuthRepositoryTaskModule {
 
     @Binds
     abstract fun provideAuthTask(

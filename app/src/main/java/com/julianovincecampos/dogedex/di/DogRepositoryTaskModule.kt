@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DogTaskModule {
+abstract class DogRepositoryTaskModule {
 
     @Binds
     abstract fun bindDogTasks(
