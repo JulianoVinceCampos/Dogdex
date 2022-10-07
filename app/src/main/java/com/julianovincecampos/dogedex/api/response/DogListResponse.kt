@@ -5,3 +5,4 @@ import com.squareup.moshi.Json
 
 
 class DogListResponse(@field:Json(name = "dogs") val dogsDTO: List<DogDTO>)
+
