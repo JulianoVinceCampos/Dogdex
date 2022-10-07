@@ -97,4 +97,5 @@ class AuthViewModelTest {
         assert(viewModel.status.value is ApiResponseStatus.Error)
 
     }
+
 }
