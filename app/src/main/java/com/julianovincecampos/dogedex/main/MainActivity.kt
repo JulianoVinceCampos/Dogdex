@@ -16,9 +16,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.core.content.ContextCompat
 import coil.annotation.ExperimentalCoilApi
-import com.julianovincecampos.dogedex.LABEL_PATH
-import com.julianovincecampos.dogedex.MODEL_PATH
-import com.julianovincecampos.dogedex.machinelearning.Classifier
 import com.julianovincecampos.dogedex.api.ApiServiceInterceptor
 import com.julianovincecampos.dogedex.api.dto.ApiResponseStatus
 import com.julianovincecampos.dogedex.auth.LoginActivity
@@ -30,9 +27,9 @@ import com.julianovincecampos.dogedex.model.Dog
 import com.julianovincecampos.dogedex.model.User
 import com.julianovincecampos.dogedex.settings.SettingsActivity
 import dagger.hilt.android.AndroidEntryPoint
-import org.tensorflow.lite.support.common.FileUtil
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import com.julianovincecampos.dogedex.R
 
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 this,
-                "You need to accept camera permission to user camera",
+                getString(R.string.permission_camera),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -86,8 +83,8 @@ class MainActivity : AppCompatActivity() {
                 is ApiResponseStatus.Error -> {
                     Toast.makeText(this, status.messageId, Toast.LENGTH_SHORT).show()
                 }
-//                is ApiResponseStatus.Loading -> binding.loadingWhell.visibility = View.VISIBLE
-//                is ApiResponseStatus.Success -> binding.loadingWhell.visibility = View.GONE
+                is ApiResponseStatus.Loading -> binding.loadingWheel.visibility = View.VISIBLE
+                is ApiResponseStatus.Success -> binding.loadingWheel.visibility = View.GONE
             }
         }
 
@@ -110,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(DogDetailComposeActivity.IS_RECOGNITION_KEY, true)
         startActivity(intent)
     }
-    
+
     private fun openDogListActivity() {
         startActivity(Intent(this, DogListActivity::class.java))
     }
@@ -145,8 +142,8 @@ class MainActivity : AppCompatActivity() {
                     setupCamera()
                 }
                 shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) -> {
-                    AlertDialog.Builder(this).setTitle("Aceite por favor")
-                        .setMessage("Aceite a permissão de camera")
+                    AlertDialog.Builder(this).setTitle(getString(R.string.title_dialog))
+                        .setMessage(getString(R.string.accept_camera_permission))
                         .setPositiveButton(android.R.string.ok) { _, _ ->
                             requestPermissionLaucher.launch(android.Manifest.permission.CAMERA)
                         }
@@ -180,7 +177,6 @@ class MainActivity : AppCompatActivity() {
 
             imageAnalysis.setAnalyzer(cameraExecutor) { imageProxy ->
                 viewmodel.recognizeImage(imageProxy)
-//                imageProxy.close()
             }
 
             cameraProvider.bindToLifecycle(
