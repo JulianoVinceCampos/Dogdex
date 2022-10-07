@@ -110,6 +110,7 @@ private fun Content(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
+            visualTransformation = PasswordVisualTransformation(),
             errorMessageId = authViewModel.confirmPasswordError.value
         )
 
