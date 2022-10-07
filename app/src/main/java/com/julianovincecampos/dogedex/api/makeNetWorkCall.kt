@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.lang.Exception
+import java.net.UnknownHostException
 
 private const val UNAUTHORIZED_ERROR_CODE = 401
 
@@ -15,7 +16,7 @@ suspend fun <T> makeNetWorkCall(
     return withContext(Dispatchers.IO) {
         try {
             ApiResponseStatus.Success(call())
-        } catch (e: UnknownError) {
+        } catch (e: UnknownHostException) {
             ApiResponseStatus.Error(R.string.unknown_host_exception)
         } catch (e: HttpException) {
             val errorMessage = if (e.code() == UNAUTHORIZED_ERROR_CODE) {
