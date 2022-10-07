@@ -24,7 +24,7 @@
             android:name=".auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".dogdetail.DogDetailActivity"
+            android:name=".dogdetail.DogDetailComposeActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainActivity"
