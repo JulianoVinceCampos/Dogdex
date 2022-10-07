@@ -7,6 +7,7 @@ import com.julianovincecampos.dogedex.machinelearning.ClassifierTask
 import com.julianovincecampos.dogedex.machinelearning.DogRecognition
 import com.julianovincecampos.dogedex.main.MainViewModel
 import com.julianovincecampos.dogedex.model.Dog
+import com.julianovincecampos.dogedex.viewmodel.MainCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert
 import org.junit.Rule
