@@ -24,6 +24,9 @@
     <string name="error_sign_in">Error signing in</string>
     <string name="user_already_exists">Error user already exists</string>
     <string name="there_was_an_error">There was an error</string>
+    <string name="permission_camera">You need to accept camera permission to user camera</string>
+    <string name="title_dialog">Please accept</string>
+    <string name="accept_camera_permission">Accept camera permission</string>
     <string name="wrong_user_or_password">Wroong user or password</string>
     <string name="this_is_a_content_description">This is a content description</string>
     <string name="logout">LOGOUT</string>
