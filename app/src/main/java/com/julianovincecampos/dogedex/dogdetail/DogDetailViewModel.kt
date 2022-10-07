@@ -31,7 +31,7 @@ class DogDetailViewModel @Inject constructor(
     }
 
     fun resetApiResponseStatus() {
-        TODO("Not yet implemented")
+        status.value = null
     }
 
 }
