@@ -138,5 +138,4 @@ class DogListViewModelTest {
         viewModel.resetApiResponseStatus()
         assert(viewModel.status.value == null)
     }
-
 }
