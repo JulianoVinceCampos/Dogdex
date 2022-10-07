@@ -16,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -37,7 +39,8 @@ private const val GRID_SPAN_COUNT = 3
 @Composable
 fun DogListScreem(
     onNavigationIconClick: () -> Unit,
-    onDogClicked: (Dog) -> Unit, viewModel: DogListViewModel = hiltViewModel()
+    onDogClicked: (Dog) -> Unit,
+    viewModel: DogListViewModel = hiltViewModel()
 ) {
     val status = viewModel.status.value
     val dogList = viewModel.dogList.value
@@ -61,15 +64,19 @@ fun DogListScreem(
     }
 }
 
+
 @Composable
-fun DogListScreenTopBar(onClick: () -> Unit) {
+fun DogListScreenTopBar(
+    onClick: () -> Unit
+) {
     TopAppBar(
-        title = { Text(text = stringResource(id = R.string.my_dog_collection)) },
+        title = { Text(stringResource(R.string.my_dog_collection)) },
         backgroundColor = Color.White,
         contentColor = Color.Black,
         navigationIcon = { BackNavigationIcon(onClick) }
     )
 }
+
 
 @ExperimentalCoilApi
 @ExperimentalMaterialApi
@@ -86,8 +93,11 @@ fun DogGridItem(dog: Dog, onDogClicked: (Dog) -> Unit) {
         ) {
             Image(
                 painter = rememberImagePainter(dog.imageUrl),
+
                 contentDescription = null,
-                modifier = Modifier.background(Color.White)
+                modifier = Modifier
+                    .background(Color.White)
+                    .semantics { testTag = "dog-${dog.nameDog}" }
             )
         }
     } else {
