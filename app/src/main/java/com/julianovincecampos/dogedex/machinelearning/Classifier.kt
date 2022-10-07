@@ -14,6 +14,7 @@ import java.nio.MappedByteBuffer
 import java.util.*
 import javax.inject.Inject
 
+
 class Classifier @Inject constructor(
     tfLiteModel: MappedByteBuffer,
     private val labels: List<String>
