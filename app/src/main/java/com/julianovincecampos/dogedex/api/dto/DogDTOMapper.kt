@@ -24,3 +24,4 @@ class DogDTOMapper {
         return dogDTOList.map { fromDogDTOToDogDomain(it) }
     }
 }
+
