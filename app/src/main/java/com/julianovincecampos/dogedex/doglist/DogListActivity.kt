@@ -22,7 +22,6 @@ class DogListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             DogedexTheme {
                 DogListScreem(
                     onNavigationIconClick = ::onNavigationIconClick,
